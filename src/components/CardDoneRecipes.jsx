@@ -25,15 +25,17 @@ function CardDoneRecipes() {
   };
 
   const handleClick = (param) => {
-    if (param === 'Meals') {
-      const filtered = arrayDoneRecipes.filter((element) => element.type !== 'drink');
-      setArrayDoneRecipes(filtered);
-    } else if (param === 'Drinks') {
-      const filtered = arrayDoneRecipes.filter((element) => element.type !== 'meal');
-
-      setArrayDoneRecipes(filtered);
-    } else {
+    switch (param) {
+    case 'Meals':
+      setArrayDoneRecipes(filteredArray.filter((element) => element.type === 'meal'));
+      break;
+    case 'Drinks':
+      setArrayDoneRecipes(filteredArray.filter((element) => element.type === 'drink'));
+      break;
+    case 'All':
       setArrayDoneRecipes(filteredArray);
+      break;
+    default:
     }
   };
 
