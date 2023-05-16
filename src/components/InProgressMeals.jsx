@@ -145,43 +145,64 @@ function InProgressMeals(props) {
   };
 
   return (
-    <div>
+    <div className="detail-meal">
       {filterMeals.map((element, index) => (
-        <section key={ index }>
+        <div className="detail-meal" key={ index }>
+          <h3
+            className="title is-3"
+            data-testid="recipe-title"
+          >
+            {element.strArea}
+          </h3>
           <img
+            className="img-detail"
             data-testid="recipe-photo"
             src={ element.strMealThumb }
             alt={ element.strArea }
           />
-          <h1 data-testid="recipe-title">{element.strArea}</h1>
-          <button
-            type="button"
-            data-testid="share-btn"
-            onClick={ clipboardClick }
+          <p
+            data-testid="recipe-category"
           >
-            <img
-              src={ shareIcon }
-              alt="shareIcon"
-            />
-          </button>
-          <button
-            type="button"
-            data-testid="favorite-btn"
-            onClick={ FavoriteButton }
-            src={ favorite ? blackHeartIcon : whiteHeartIcon }
-          >
-            <img
-              src={ favorite ? blackHeartIcon : whiteHeartIcon }
-              alt={ favorite ? 'blackHeartIcon' : 'whiteHeartIcon' }
-            />
-          </button>
-          <p>{ clipboard }</p>
-          <p data-testid="recipe-category">{element.strCategory}</p>
-          <h3>Instrução</h3>
-          <p data-testid="instructions">
-            {element.strInstructions}
+            {`Category: ${element.strCategory}`}
           </p>
-        </section>
+          <div className="content">
+            <button
+              className="button is-rounded pink-button"
+              type="button"
+              data-testid="share-btn"
+              onClick={ clipboardClick }
+            >
+              <img
+                src={ shareIcon }
+                alt="shareIcon"
+              />
+            </button>
+            <button
+              className="button is-rounded pink-button"
+              type="button"
+              data-testid="favorite-btn"
+              onClick={ FavoriteButton }
+              src={ favorite ? blackHeartIcon : whiteHeartIcon }
+            >
+              <img
+                src={ favorite ? blackHeartIcon : whiteHeartIcon }
+                alt={ favorite ? 'blackHeartIcon' : 'whiteHeartIcon' }
+              />
+            </button>
+          </div>
+          <p>{ clipboard }</p>
+          <div className="content">
+            <h6
+              className="title is-6"
+              data-testid="recipe-title"
+            >
+              Instructions:
+            </h6>
+            <span data-testid="instructions">
+              {element.strInstructions}
+            </span>
+          </div>
+        </div>
       ))}
       {
         getIngredients.map((ingredient, index) => (
@@ -202,15 +223,18 @@ function InProgressMeals(props) {
           </label>
         ))
       }
-      <button
-        type="button"
-        data-testid="finish-recipe-btn"
-        disabled={ disable }
-        onClick={ finishButton }
-      >
-        Finalizar
+      <div className="margin-button-div">
+        <button
+          type="button"
+          className="button is-link is-rounded"
+          data-testid="finish-recipe-btn"
+          disabled={ disable }
+          onClick={ finishButton }
+        >
+          Finalizar
 
-      </button>
+        </button>
+      </div>
     </div>
   );
 }

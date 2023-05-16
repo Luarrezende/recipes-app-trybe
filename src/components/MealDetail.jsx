@@ -226,16 +226,18 @@ function MealDetails({ pathname }) {
         <Recommendations data={ dataDrinks } pageTypes="drinks" />
       </div>
 
-      <button
-        type="button"
-        className="btn"
-        data-testid="start-recipe-btn"
-        onClick={ () => history.push(`${pathname}/in-progress`) }
-      >
-        {
-          verifyInProgress ? 'Continue Recipe' : 'Start Recipe'
-        }
-      </button>
+      <div className="margin-button-div">
+        <button
+          type="button"
+          className="button is-link is-rounded"
+          data-testid="start-recipe-btn"
+          onClick={ () => history.push(`${pathname}/in-progress`) }
+        >
+          {
+            verifyInProgress ? 'Continue Recipe' : 'Start Recipe'
+          }
+        </button>
+      </div>
 
     </div>
   );
