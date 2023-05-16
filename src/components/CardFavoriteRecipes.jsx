@@ -51,8 +51,6 @@ function CardFavoriteRecipes() {
       break;
     default:
       setArrayFavorite(filteredArray);
-      break;
-    default:
     }
   };
 
