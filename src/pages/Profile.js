@@ -28,28 +28,43 @@ function Profile() {
   return (
     <div>
       <Header title="Profile" searchIcon={ false } />
-      <p data-testid="profile-email">{ verifyEmail() }</p>
-      <button
-        type="button"
-        data-testid="profile-done-btn"
-        onClick={ doneRecipesPush }
-      >
-        Done Recipes
-      </button>
-      <button
-        type="button"
-        data-testid="profile-favorite-btn"
-        onClick={ favoriteRecipesPush }
-      >
-        Favorite Recipes
-      </button>
-      <button
-        type="button"
-        data-testid="profile-logout-btn"
-        onClick={ logout }
-      >
-        Logout
-      </button>
+      <div className="container">
+        <div className="email-show">
+          <span className="white" data-testid="profile-email">{ verifyEmail() }</span>
+        </div>
+        <div className="center buttons-header flex-buttons">
+          <div id="margin">
+            <button
+              className="button is-small is-rounded"
+              type="button"
+              data-testid="profile-done-btn"
+              onClick={ doneRecipesPush }
+            >
+              Done Recipes
+            </button>
+          </div>
+          <div id="margin">
+            <button
+              className="button is-small is-rounded"
+              type="button"
+              data-testid="profile-favorite-btn"
+              onClick={ favoriteRecipesPush }
+            >
+              Favorite Recipes
+            </button>
+          </div>
+          <div id="margin">
+            <button
+              className="button is-small is-rounded"
+              type="button"
+              data-testid="profile-logout-btn"
+              onClick={ logout }
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );

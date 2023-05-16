@@ -160,21 +160,12 @@ function MealDetails({ pathname }) {
                   Video tutorial:
                 </h6>
                 <iframe
-                  src="https://www.youtube.com/embed/YsJXZwE5pdY"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope;"
-                  allowfullscreen
-                />
-                {/* <iframe
                   title={ `Receita: ${strMeal}` }
-                  width="560"
-                  height="315"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope;"
                   allowFullScreen
-                  src={ strYoutube }
+                  src={ strYoutube.replace('watch?v=', 'embed/') }
                   data-testid="video"
-                /> */}
+                />
               </div>
             </div>
           ),

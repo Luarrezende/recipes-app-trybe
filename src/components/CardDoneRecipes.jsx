@@ -40,45 +40,56 @@ function CardDoneRecipes() {
   };
 
   return (
-    <section>
-      <button
-        type="button"
-        onClick={ () => handleClick('Meals') }
-        data-testid="filter-by-meal-btn"
-      >
-        Meals
+    <div className="container">
+      <div className="center buttons-header flex-buttons">
+        <div id="margin">
+          <button
+            className="button is-small is-rounded"
+            type="button"
+            onClick={ () => handleClick('Meals') }
+            data-testid="filter-by-meal-btn"
+          >
+            Meals
+          </button>
+        </div>
+        <div id="margin">
+          <button
+            className="button is-small is-rounded"
+            type="button"
+            onClick={ () => handleClick('Drinks') }
+            data-testid="filter-by-drink-btn"
+          >
+            Drinks
+          </button>
+        </div>
+        <div id="margin">
+          <button
+            className="button is-small is-rounded"
+            type="button"
+            onClick={ () => handleClick('All') }
+            data-testid="filter-by-all-btn"
+          >
+            All
+          </button>
+        </div>
+      </div>
 
-      </button>
-      <button
-        type="button"
-        onClick={ () => handleClick('Drinks') }
-        data-testid="filter-by-drink-btn"
-      >
-        Drinks
-
-      </button>
-      <button
-        type="button"
-        onClick={ () => handleClick('All') }
-        data-testid="filter-by-all-btn"
-      >
-        All
-
-      </button>
       {
         arrayDoneRecipes.map((element, index) => (
-          <div key={ element.name }>
+          <div className="card-recipe" key={ element.name }>
             <Link to={ `${element.type}s/${element.id}` }>
               <img
+                className="zoom img-card-recipe"
                 data-testid={ `${index}-horizontal-image` }
                 src={ element.image }
                 alt={ element.name }
               />
-              <p data-testid={ `${index}-horizontal-name` }>{element.name}</p>
+              <p id="margin" data-testid={ `${index}-horizontal-name` }>{element.name}</p>
             </Link>
             {element.type !== 'drink'
               ? (
                 <p
+                  className="white"
                   data-testid={ `${index}-horizontal-top-text` }
                 >
                   {`${element.nationality} - ${element.category}`}
@@ -86,33 +97,38 @@ function CardDoneRecipes() {
               )
               : (
                 <p
+                  className="white"
                   data-testid={ `${index}-horizontal-top-text` }
                 >
                   {element.alcoholicOrNot}
                 </p>
               )}
-            <p data-testid={ `${index}-horizontal-done-date` }>{element.doneDate}</p>
+            {/* <p className="white" data-testid={ `${index}-horizontal-done-date` }>{element.doneDate}</p> */}
             <button
               type="button"
+              className="button is-small is-link is-rounded"
               data-testid={ `${index}-horizontal-share-btn` }
               src={ shareIcon }
               onClick={ () => copyLink(element) }
             >
-              { shareIcon }
+              <img
+                src={ shareIcon }
+                alt="shareIcon"
+              />
             </button>
-            <p>{ clipboard }</p>
-            {element.tags.slice(0, 2).map((tag, tagIndex) => (
+            <p className="white">{ clipboard }</p>
+            {/* {element.tags.slice(0, 2).map((tag, tagIndex) => (
               <span
                 key={ tagIndex }
                 data-testid={ `${index}-${tag}-horizontal-tag` }
               >
                 {tag}
               </span>
-            ))}
+            ))} */}
           </div>
         ))
       }
-    </section>
+    </div>
   );
 }
 
