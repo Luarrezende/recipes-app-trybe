@@ -6,7 +6,7 @@ import MealDetail from '../components/MealDetail';
 function RecipeDetails() {
   const { pathname } = useLocation();
   return (
-    <div>
+    <div className="detail-meal">
       { pathname.includes('/meals')
         ? <MealDetail pathname={ pathname } />
         : <DrinkDetail pathname={ pathname } />}

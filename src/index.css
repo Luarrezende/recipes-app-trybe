@@ -88,6 +88,7 @@ a, a:visited {
 
 .title {
   padding-top: 15px;
+  margin-bottom: 5px !important;
 }
 
 .white {
@@ -167,17 +168,18 @@ button:active {
 }
 
 .card-recipe {
-  width: 30%;
+  width: 90%;
   transition: transform .1s; /* Animation */
-  background-color: #1c0037;
+  background-color:#510a98;
   text-decoration: none !important;
   display: flex;
   text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 10px !important;
-  padding: 5px;
+  border-radius: 10% !important;
+  margin: 5px;
+  padding: 10px;
 }
 
 .card-recipe > a, .card-recipe > a:visited {
@@ -200,3 +202,65 @@ button:active {
 .img-card-recipe {
   border-radius: 10% !important;
 }
+
+
+.detail-meal {
+ width: 100%;
+ text-decoration: none !important;
+ display: flex;
+ text-align: center;
+ flex-direction: column;
+ align-items: center;
+}
+
+.img-detail {
+  max-width: 50%;
+  border-radius: 5%;
+}
+
+.content {
+  margin: 5px !important;
+  width: 90%;
+}
+
+span {
+  word-break: keep-all;
+  white-space:break-spaces;
+}
+
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  padding-top: 15px;
+}
+
+.ingredients-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#left {
+  margin: 5px;
+  text-align: left;
+}
+
+#right {
+  margin: 5px;
+  text-align: right;
+}
+
+.carousel {
+  width: 90%;
+}
+
+/*
+FALTA:
+  PROFILE
+
+  IN PROGRESS
+  DONE RECIPES
+  FAVORITE
+
+*/

@@ -90,93 +90,141 @@ function MealDetails({ pathname }) {
   };
 
   return (
-    <div>
+    <div className="detail-meal">
       { recipeArrayMeal
         .map(
           ({
             idMeal, strMeal, strCategory, strInstructions, strMealThumb, strYoutube,
           }) => (
-            <div key={ idMeal }>
-              <h3 data-testid="recipe-title">
+            <div className="detail-meal" key={ idMeal }>
+              <h3
+                className="title is-3"
+                data-testid="recipe-title"
+              >
                 {strMeal}
               </h3>
               <img
+                className="img-detail"
                 src={ strMealThumb }
                 alt={ strMeal }
                 data-testid="recipe-photo"
               />
               <p data-testid="recipe-category">
-                {strCategory}
+                {`Category: ${strCategory}`}
               </p>
-              <button
-                type="button"
-                data-testid="share-btn"
-                onClick={ clipboardClick }
-              >
-                <img
-                  src={ shareIcon }
-                  alt="shareIcon"
-                />
-              </button>
-              <p>{ clipboard }</p>
-              <p data-testid="instructions">
-                {strInstructions}
-              </p>
-              <iframe
-                title={ `Receita: ${strMeal}` }
-                width="560"
-                height="315"
-                allow="accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture"
-                allowFullScreen
-                src={ strYoutube }
-                data-testid="video"
-              >
-                Click me
-              </iframe>
-              <button
-                onClick={ handleClick }
-                type="button"
-                data-testid="favorite-btn"
-                src={ verifyIsFavorite ? blackHeartIcon : whiteHeartIcon }
-              >
-                <img
+              <div className="content">
+                <button
+                  className="button is-rounded pink-button"
+                  type="button"
+                  data-testid="share-btn"
+                  onClick={ clipboardClick }
+                >
+                  <img
+                    src={ shareIcon }
+                    alt="shareIcon"
+                  />
+                </button>
+                <button
+                  className="button is-rounded pink-button"
+                  onClick={ handleClick }
+                  type="button"
+                  data-testid="favorite-btn"
                   src={ verifyIsFavorite ? blackHeartIcon : whiteHeartIcon }
-                  alt={ verifyIsFavorite ? 'blackHeartIcon' : 'whiteHeartIcon' }
-                />
+                >
+                  <img
+                    src={ verifyIsFavorite ? blackHeartIcon : whiteHeartIcon }
+                    alt={ verifyIsFavorite ? 'blackHeartIcon' : 'whiteHeartIcon' }
+                  />
 
-              </button>
+                </button>
+              </div>
+              <span>{ clipboard }</span>
+              <div className="content">
+                <h6
+                  className="title is-6"
+                  data-testid="recipe-title"
+                >
+                  Instructions:
+                </h6>
+                <span
+                  data-testid="instructions"
+                >
+                  {strInstructions}
+                </span>
+              </div>
+              <div className="video-container">
+                <h6
+                  className="title is-6"
+                  data-testid="recipe-title"
+                >
+                  Video tutorial:
+                </h6>
+                <iframe
+                  src="https://www.youtube.com/embed/YsJXZwE5pdY"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+                  allowfullscreen
+                />
+                {/* <iframe
+                  title={ `Receita: ${strMeal}` }
+                  width="560"
+                  height="315"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+                  allowFullScreen
+                  src={ strYoutube }
+                  data-testid="video"
+                /> */}
+              </div>
             </div>
           ),
         )}
-      <div>
-        {
-          getMeasures.map((measure, index) => (
-            <p
-              key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { measure[1] }
-            </p>
-          ))
-        }
-        {
-          getIngredients.map((ingredient, index) => (
-            <p
-              key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              {ingredient[1]}
-            </p>
-          ))
-        }
+      <div className="content">
+        <h6
+          className="title is-6"
+          data-testid="recipe-title"
+        >
+          Ingredients:
+        </h6>
+        <div className="ingredients-container">
+          <div>
+            {
+              getMeasures.map((measure, index) => (
+                <p
+                  id="right"
+                  key={ index }
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                >
+                  { measure[1] }
+                </p>
+              ))
+            }
+          </div>
+          <div>
+            {
+              getIngredients.map((ingredient, index) => (
+                <p
+                  id="left"
+                  key={ index }
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                >
+                  {` ${ingredient[1]}`}
+                </p>
+              ))
+            }
+          </div>
+        </div>
       </div>
 
-      <Recommendations data={ dataDrinks } pageTypes="drinks" />
+      <div className="carousel">
+        <h6
+          className="title is-6"
+          data-testid="recipe-title"
+        >
+          Recommendations:
+        </h6>
+        <Recommendations data={ dataDrinks } pageTypes="drinks" />
+      </div>
 
       <button
         type="button"
