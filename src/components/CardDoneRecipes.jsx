@@ -27,6 +27,7 @@ function CardDoneRecipes() {
   const handleClick = (param) => {
     switch (param) {
     case 'Meals':
+
       setArrayDoneRecipes(filteredArray.filter((element) => element.type === 'meal'));
       break;
     case 'Drinks':

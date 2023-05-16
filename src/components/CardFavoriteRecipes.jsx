@@ -44,12 +44,12 @@ function CardFavoriteRecipes() {
   const handleClick = (param) => {
     switch (param) {
     case 'Meals':
-      setArrayFavorite(filteredArray.filter((element) => element.type === 'meal'));
+      setArrayFavorite(filteredArray.filter((recipe) => recipe.type === 'meal'));
       break;
     case 'Drinks':
-      setArrayFavorite(filteredArray.filter((element) => element.type === 'drink'));
+      setArrayFavorite(filteredArray.filter((recipe) => recipe.type === 'drink'));
       break;
-    case 'All':
+    default:
       setArrayFavorite(filteredArray);
       break;
     default:
